@@ -1,0 +1,35 @@
+Projet_java --module
+
+
+Gestion Utilisateurs
+	Admin:
+		Ajouter un utilisateur
+		Bloquer un Utilisateur
+	Utilisateur:
+		Modifier les informations
+
+Sécurité 
+	Connexion
+	Cryptage/Décryptage du mot de passe
+
+Gestion Stock
+	Gestionnaire de stock
+		Ajouter un nouveau produit
+		Bloquer un produit (supprimer un produit)
+		Modifier produit (Augmenter la quantité en stock)
+		Faire inventaire (Entree & Vente)
+
+Gestion Commande
+	Chargé des ventes
+		Enregistrer une commande
+		Annuler une commande
+		Ajouter Client
+		Generer un bon de commande
+
+Facturation
+	Comptabilité
+		Enregistrer la Vente
+		Generer la/les factures
+		
+		
+

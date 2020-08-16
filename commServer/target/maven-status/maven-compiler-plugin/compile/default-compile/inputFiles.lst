@@ -1,0 +1,10 @@
+/home/marshall/Documents/JavaProject/commServer/src/main/java/gesCommande/services/UserDao.java
+/home/marshall/Documents/JavaProject/commServer/src/main/java/gesCommande/services/CommandeDao.java
+/home/marshall/Documents/JavaProject/commServer/src/main/java/gesCommande/services/FactureDao.java
+/home/marshall/Documents/JavaProject/commServer/src/main/java/gesCommande/services/StockDao.java
+/home/marshall/Documents/JavaProject/commServer/src/main/java/gesCommande/utils/HibernateUtil.java
+/home/marshall/Documents/JavaProject/commServer/src/main/java/gesCommande/services/ClientDao.java
+/home/marshall/Documents/JavaProject/commServer/src/main/java/gesCommande/services/DetailDao.java
+/home/marshall/Documents/JavaProject/commServer/src/main/java/gesCommande/services/ProduitDao.java
+/home/marshall/Documents/JavaProject/commServer/src/main/java/gesCommande/services/ParametreDao.java
+/home/marshall/Documents/JavaProject/commServer/src/main/java/gesCommande/App.java

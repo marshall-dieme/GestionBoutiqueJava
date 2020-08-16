@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="650.0" maxWidth="1024.0" minHeight="650.0" minWidth="1024.0" prefHeight="650.0" prefWidth="1024.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="exo.rmi.controller.MainViewController">
+   <children>
+      <Pane fx:id="headerPane" layoutX="262.0" layoutY="14.0" prefHeight="51.0" prefWidth="797.0" style="-fx-background-color: #f2f2f2; -fx-background-radius: 10px;" AnchorPane.bottomAnchor="599.0" AnchorPane.leftAnchor="227.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-10.0">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <Label fx:id="lblName" layoutX="640.0" layoutY="23.0" prefHeight="25.0" prefWidth="136.0" text="Label" />
+         </children>
+      </Pane>
+      <Pane fx:id="menuPane" layoutX="25.0" layoutY="88.0" prefHeight="650.0" prefWidth="227.0" style="-fx-background-color: #f2f2f2; -fx-background-radius: 10px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-10.0" AnchorPane.rightAnchor="797.0" AnchorPane.topAnchor="0.0">
+         <effect>
+            <DropShadow blurType="TWO_PASS_BOX" />
+         </effect>
+         <children>
+            <VBox layoutX="9.0" layoutY="-1.0" prefHeight="501.0" prefWidth="229.0" style="-fx-background-radius: 10px;">
+               <children>
+                  <ImageView fx:id="logoImage" fitHeight="147.0" fitWidth="228.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../Documents/logo.png" />
+                     </image></ImageView>
+                  <JFXButton fx:id="btnHome" onAction="#home" prefHeight="51.0" prefWidth="228.0" style="-fx-background-color: #4a148c;" text="Accueil" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton fx:id="btnProduit" onAction="#product" prefHeight="51.0" prefWidth="228.0" text="Produits">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton fx:id="btnCommande" onAction="#order" prefHeight="51.0" prefWidth="228.0" text="Commande">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton fx:id="btnFacture" onAction="#facture" prefHeight="51.0" prefWidth="228.0" text="Facturation">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton fx:id="btnUser" onAction="#users" prefHeight="51.0" prefWidth="228.0" text="Utilisateurs">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXButton fx:id="btnParams" onAction="#param_loader" prefHeight="51.0" prefWidth="228.0" text="Parametres">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+               </children>
+            </VBox>
+            <JFXButton fx:id="btnLogout" layoutX="10.0" layoutY="593.0" onAction="#logout_user" prefHeight="51.0" prefWidth="228.0" text="Deconnection">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </Pane>
+      <Pane layoutX="211.0" prefHeight="51.0" prefWidth="25.0" style="-fx-background-color: #f2f2f2;" AnchorPane.bottomAnchor="599.0" AnchorPane.leftAnchor="211.0" AnchorPane.rightAnchor="788.0" AnchorPane.topAnchor="0.0" />
+      <Pane fx:id="newCommPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="235.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="56.0">
+         <children>
+            <TableView fx:id="tableListeCommande" layoutX="14.0" layoutY="283.0" prefHeight="193.0" prefWidth="758.0">
+              <columns>
+                <TableColumn fx:id="clnProduitDetail" prefWidth="294.0" text="Designation" />
+                  <TableColumn fx:id="clnQuantiteDetail" prefWidth="139.0" text="Quantité" />
+                  <TableColumn fx:id="clnPrixDetail" prefWidth="168.0" text="Prix Unitaire" />
+                  <TableColumn fx:id="clnTotalDetail" prefWidth="151.0" text="Total" />
+              </columns>
+            </TableView>
+            <Label layoutX="14.0" layoutY="483.0" prefHeight="25.0" prefWidth="75.0" text="Total">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txtTotalCommande" editable="false" focusColor="#4a148c" layoutX="581.0" layoutY="483.0" prefHeight="26.0" prefWidth="190.0" text="0 CFA" />
+            <Separator layoutX="14.0" layoutY="213.0" prefHeight="10.0" prefWidth="758.0" />
+            <JFXComboBox fx:id="cbxProduitComm" focusColor="#4a148c" labelFloat="true" layoutX="14.0" layoutY="238.0" prefHeight="33.0" prefWidth="308.0" promptText="Produit" />
+            <JFXTextField fx:id="txtQuantiteComm" focusColor="#4a148c" labelFloat="true" layoutX="344.0" layoutY="238.0" prefHeight="33.0" prefWidth="211.0" promptText="Quantite" />
+            <JFXButton fx:id="btnAddCommande" layoutX="575.0" layoutY="241.0" onAction="#add_commande" prefHeight="33.0" prefWidth="94.0" style="-fx-background-color: #5cb85c;" text="Ajouter" textFill="WHITE" />
+            <JFXButton fx:id="btnDeleteDetail" layoutX="676.0" layoutY="241.0" onAction="#supprimer_detail" prefHeight="33.0" prefWidth="94.0" style="-fx-background-color: #d9534f;" text="Enlever" textFill="WHITE" visible="false" />
+            <JFXTextField fx:id="txtNomClient" editable="false" focusColor="#4a148c" labelFloat="true" layoutX="27.0" layoutY="66.0" prefHeight="33.0" prefWidth="300.0" promptText="Nom" />
+            <JFXTextField fx:id="txtPrenomClient" editable="false" focusColor="#4a148c" labelFloat="true" layoutX="27.0" layoutY="122.0" prefHeight="33.0" prefWidth="300.0" promptText="Prenom" />
+            <JFXDatePicker fx:id="txtDateLivraison" defaultColor="#4a148c" layoutX="23.0" layoutY="537.0" prefHeight="29.0" prefWidth="308.0" promptText="Date de Livraison" />
+            <JFXTextField fx:id="txtIdClient" focusColor="#4a148c" labelFloat="true" layoutX="27.0" layoutY="14.0" prefHeight="33.0" prefWidth="300.0" promptText="CIN" />
+            <JFXTextField fx:id="txtEmail" editable="false" focusColor="#4a148c" labelFloat="true" layoutX="427.0" layoutY="118.0" prefHeight="33.0" prefWidth="300.0" promptText="Email" />
+            <JFXDatePicker fx:id="txtDateNaissance" defaultColor="#4a148c" editable="false" layoutX="27.0" layoutY="170.0" prefHeight="33.0" prefWidth="300.0" promptText="Date de Naissance" />
+            <JFXTextField fx:id="txtAdresse" editable="false" focusColor="#4a148c" labelFloat="true" layoutX="427.0" layoutY="170.0" prefHeight="33.0" prefWidth="300.0" promptText="Adresse" />
+            <JFXComboBox fx:id="cbxTypeClient" disable="true" focusColor="#4a148c" labelFloat="true" layoutX="425.0" layoutY="66.0" prefHeight="33.0" prefWidth="300.0" promptText="Type de Client" />
+            <JFXButton fx:id="btnSaveCommande" layoutX="550.0" layoutY="532.0" onAction="#save_commande" prefHeight="40.0" prefWidth="164.0" style="-fx-background-color: #4a148c;" text="Enregistrer" textFill="WHITE" />
+         </children></Pane>
+      <Pane fx:id="newProductPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="235.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="56.0">
+         <children>
+            <JFXTextField fx:id="txtLibelleProduit" focusColor="#4a148c" labelFloat="true" layoutX="393.0" layoutY="132.0" prefHeight="33.0" prefWidth="319.0" promptText="Libelle Produit">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtPrixProduit" focusColor="#4a148c" labelFloat="true" layoutX="14.0" layoutY="228.0" prefHeight="33.0" prefWidth="319.0" promptText="Prix Unitaire">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtQuantite" focusColor="#4a148c" labelFloat="true" layoutX="14.0" layoutY="306.0" prefHeight="33.0" prefWidth="319.0" promptText="Quantité Stock">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtMarge" focusColor="#4a148c" labelFloat="true" layoutX="393.0" layoutY="228.0" prefHeight="33.0" prefWidth="319.0" promptText="Pourcentage Réduction Applicable">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtQuantiteSeuil" focusColor="#4a148c" labelFloat="true" layoutX="395.0" layoutY="306.0" prefHeight="33.0" prefWidth="319.0" promptText="Quantité Seuil">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXButton fx:id="btnAjouterProduit" layoutX="292.0" layoutY="502.0" onAction="#save_produit" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #4a148c;" text="Enregistrer" textFill="WHITE" />
+            <JFXButton fx:id="btnApprovisionner" layoutX="293.0" layoutY="502.0" onAction="#add_stock" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #4a148c;" text="Approvisionner" textFill="WHITE" visible="false" />
+            <JFXTextField fx:id="txtQuantiteAppro" focusColor="#4a148c" labelFloat="true" layoutX="192.0" layoutY="401.0" prefHeight="33.0" prefWidth="362.0" promptText="Quantité Reçu" visible="false">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXButton fx:id="btnUpdateProduct" layoutX="293.0" layoutY="502.0" onAction="#modifier_produit" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #4a148c;" text="Modifier" textFill="WHITE" visible="false" />
+            <JFXComboBox fx:id="cbxCategorie" focusColor="#4a148c" labelFloat="true" layoutX="14.0" layoutY="44.0" prefHeight="33.0" prefWidth="319.0" promptText="Categorie" />
+            <JFXComboBox fx:id="cbxMarque" focusColor="#4a148c" labelFloat="true" layoutX="393.0" layoutY="44.0" prefHeight="33.0" prefWidth="319.0" promptText="Marque" />
+            <JFXTextField fx:id="txtNumProd" focusColor="#4a148c" labelFloat="true" layoutX="14.0" layoutY="132.0" prefHeight="33.0" prefWidth="319.0" promptText="Numero Produit">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+         </children></Pane>
+      <Pane fx:id="productPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="235.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="56.0">
+         <children>
+            <TableView fx:id="produitTable" layoutX="14.0" layoutY="97.0" prefHeight="484.0" prefWidth="764.0" style="-fx-selection-bar: #4a148c; -fx-border-color: #4a148c;">
+              <columns>
+                <TableColumn fx:id="clnLibelleProduit" prefWidth="294.0" text="Libelle" />
+                  <TableColumn fx:id="clnCategorieProd" prefWidth="150.0" text="Categorie" />
+                  <TableColumn fx:id="clnPrixProduit" minWidth="0.0" prefWidth="137.0" text="Prix Unitaire" />
+                  <TableColumn fx:id="clnQuantiteProduit" prefWidth="181.0" text="Quantité Stock" />
+              </columns>
+            </TableView>
+            <JFXButton fx:id="btnNewProduit" layoutX="627.0" layoutY="53.0" onAction="#new_produit" prefHeight="33.0" prefWidth="148.0" style="-fx-background-color: #4a148c;" text="Nouveau Produit" textFill="WHITE" />
+            <JFXButton fx:id="btnDeleteProduit" disable="true" layoutX="252.0" layoutY="50.0" onAction="#delete_produit" prefHeight="33.0" prefWidth="94.0" style="-fx-background-color: #d9534f;" text="Supprimer" textFill="WHITE" />
+            <JFXButton fx:id="btnNewAppro" disable="true" layoutX="14.0" layoutY="50.0" onAction="#appro_produit" prefHeight="33.0" prefWidth="124.0" style="-fx-background-color: #5cb85c;" text="Approvisionner" textFill="WHITE" />
+            <JFXButton fx:id="btnUpdateProduit" disable="true" layoutX="150.0" layoutY="50.0" onAction="#update_produit" prefHeight="33.0" prefWidth="94.0" style="-fx-background-color: #0275d8;" text="Modifier" textFill="WHITE" />
+         </children></Pane>
+      <Pane fx:id="facturePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="235.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="56.0">
+         <children>
+            <TableView fx:id="tableCommandeFact" layoutX="14.0" layoutY="142.0" prefHeight="438.0" prefWidth="746.0">
+               <columns>
+                  <TableColumn fx:id="clnNumCommFact" prefWidth="196.0" text="Numero" />
+                  <TableColumn fx:id="clnDateCommFact" prefWidth="158.0" text="Date Livraison" />
+                  <TableColumn fx:id="clnMontantCommFact" prefWidth="116.0" text="Montant Total" />
+                  <TableColumn fx:id="clnAcompteCommFact" prefWidth="117.0" text="Acompte" />
+                  <TableColumn fx:id="clnClientCommandeFact" prefWidth="155.0" text="Client" />
+               </columns>
+            </TableView>
+            <JFXButton fx:id="btnSaveFacture" layoutX="20.0" layoutY="94.0" onAction="#new_facture" prefHeight="33.0" prefWidth="164.0" style="-fx-background-color: #4a148c;" text="Enregistrer Paiement" textFill="WHITE" />
+         </children></Pane>
+      <Pane fx:id="commandePane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="235.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="56.0">
+         <children>
+            <TableView fx:id="tableCommande" layoutX="21.0" layoutY="139.0" prefHeight="438.0" prefWidth="746.0">
+              <columns>
+                <TableColumn fx:id="clnNumComm" prefWidth="138.0" text="Numero" />
+                  <TableColumn fx:id="clnDateComm" prefWidth="149.0" text="Date Livraison" />
+                  <TableColumn fx:id="clnMontantComm" prefWidth="119.0" text="Montant Total" />
+                  <TableColumn fx:id="clnAcompteComm" prefWidth="107.0" text="Acompte" />
+                  <TableColumn fx:id="clnClientCommande" prefWidth="185.0" text="Client" />
+              </columns>
+            </TableView>
+            <JFXButton fx:id="btnNewComm" layoutX="21.0" layoutY="95.0" onAction="#new_commande" prefHeight="33.0" prefWidth="164.0" style="-fx-background-color: #4a148c;" text="Nouvelle Commande" textFill="WHITE" />
+            <JFXButton fx:id="btnAnnulerComm" disable="true" layoutX="192.0" layoutY="96.0" onAction="#annuler_commande" prefHeight="33.0" prefWidth="94.0" style="-fx-background-color: #d9534f;" text="Annuler" textFill="WHITE" />
+            <JFXTextField fx:id="txtSearchComm" focusColor="#4a148c" labelFloat="true" layoutX="529.0" layoutY="92.0" prefHeight="33.0" prefWidth="237.0" promptText="Rechercher..." />
+            <JFXButton fx:id="btnInfosComm" disable="true" layoutX="294.0" layoutY="96.0" onAction="#infos_comm" prefHeight="33.0" prefWidth="75.0" style="-fx-background-color: #5bc0de;" text="Infos" textFill="WHITE" />
+<!--            <JFXButton fx:id="btnBon" disable="true" layoutX="529.0" layoutY="31.0" onAction="#generer_bon" prefHeight="33.0" prefWidth="190.0" style="-fx-background-color: #5bc0de;" text="Bon de Commande" textFill="WHITE" />-->
+         </children></Pane>
+      <Pane fx:id="homePane" layoutX="235.0" layoutY="56.0" prefHeight="594.0" prefWidth="789.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="235.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="56.0">
+         <children>
+            <LineChart fx:id="sellChart" layoutX="14.0" layoutY="14.0" prefHeight="567.0" prefWidth="764.0" title="Resume">
+              <xAxis>
+                <CategoryAxis label="Mois" side="BOTTOM" fx:id="xAxis" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis fx:id="yAxis" label="Ventes" side="LEFT" />
+              </yAxis>
+            </LineChart>
+         </children></Pane>
+      <Pane fx:id="userPane" layoutX="245.0" layoutY="66.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="235.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="56.0">
+         <children>
+            <TableView fx:id="tableUser" layoutX="14.0" layoutY="97.0" prefHeight="420.0" prefWidth="758.0">
+              <columns>
+                <TableColumn fx:id="clnUserId" prefWidth="118.0" text="CIN" />
+                <TableColumn fx:id="clnUserNom" prefWidth="127.0" text="Nom" />
+                  <TableColumn fx:id="clnUserPrenom" prefWidth="127.0" text="Prenom" />
+                  <TableColumn fx:id="clnUserAdresse" prefWidth="119.0" text="Adresse" />
+                  <TableColumn fx:id="clnUserProfil" prefWidth="129.0" text="Profil" />
+                  <TableColumn fx:id="clnUserStatus" prefWidth="129.0" text="Status" />
+              </columns>
+            </TableView>
+            <JFXButton fx:id="btnNewUser" layoutX="20.0" layoutY="52.0" onAction="#nouvelle_user" prefHeight="33.0" prefWidth="164.0" style="-fx-background-color: #4a148c;" text="Ajouter Utilisateur" textFill="WHITE" />
+            <JFXButton fx:id="btnBloqueUser" disable="true" layoutX="211.0" layoutY="52.0" onAction="#bloque_user" prefHeight="33.0" prefWidth="94.0" style="-fx-background-color: #d9534f;" text="Bloquer" textFill="WHITE" />
+         </children></Pane>
+      <Pane fx:id="newUserPane" layoutX="234.0" layoutY="56.0" prefHeight="588.0" prefWidth="789.0" style="-fx-background-color: #fff;">
+         <children>
+            <JFXTextField fx:id="txtPrenomUser" focusColor="#4a148c" labelFloat="true" layoutX="14.0" layoutY="119.0" prefHeight="33.0" prefWidth="319.0" promptText="Prenom">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtIdUser" focusColor="#4a148c" labelFloat="true" layoutX="14.0" layoutY="222.0" prefHeight="33.0" prefWidth="319.0" promptText="CIN">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtNomUser" focusColor="#4a148c" labelFloat="true" layoutX="456.0" layoutY="119.0" prefHeight="33.0" prefWidth="319.0" promptText="Nom">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtAdresseUser" focusColor="#4a148c" labelFloat="true" layoutX="456.0" layoutY="222.0" prefHeight="33.0" prefWidth="319.0" promptText="Adresse">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtEmailUser" focusColor="#4a148c" labelFloat="true" layoutX="14.0" layoutY="321.0" prefHeight="33.0" prefWidth="319.0" promptText="Email">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXComboBox fx:id="cbxProfilUser" focusColor="#4a148c" labelFloat="true" layoutX="462.0" layoutY="321.0" prefHeight="33.0" prefWidth="308.0" promptText="Profil" />
+            <JFXButton fx:id="btnSaveUser" layoutX="282.0" layoutY="467.0" onAction="#save_user" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #4a148c;" text="Embaucher" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Pane fx:id="paramsPane" layoutX="234.0" layoutY="57.0" prefHeight="588.0" prefWidth="789.0" style="-fx-background-color: #fff;">
+         <children>
+            <JFXTextField fx:id="txtPrenomLog" editable="false" focusColor="#4a148c" labelFloat="true" layoutX="16.0" layoutY="34.0" prefHeight="33.0" prefWidth="319.0" promptText="Prenom">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtIdLog" editable="false" focusColor="#4a148c" labelFloat="true" layoutX="16.0" layoutY="137.0" prefHeight="33.0" prefWidth="319.0" promptText="CIN">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtNomLog" editable="false" focusColor="#4a148c" labelFloat="true" layoutX="458.0" layoutY="34.0" prefHeight="33.0" prefWidth="319.0" promptText="Nom">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtAdresseLog" editable="false" focusColor="#4a148c" labelFloat="true" layoutX="458.0" layoutY="137.0" prefHeight="33.0" prefWidth="319.0" promptText="Adresse">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtEmailLog" editable="false" focusColor="#4a148c" labelFloat="true" layoutX="16.0" layoutY="236.0" prefHeight="33.0" prefWidth="319.0" promptText="Email">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXButton fx:id="btnUpdateUser" layoutX="282.0" layoutY="467.0" onAction="#update_user" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #4a148c;" text="Enregistrer" textFill="WHITE" />
+            <Line endX="327.0" layoutX="270.0" layoutY="321.0" startX="-100.0" stroke="#4a148c" />
+            <JFXPasswordField fx:id="txtPassword" focusColor="#4a148c" labelFloat="true" layoutX="21.0" layoutY="367.0" prefHeight="29.0" prefWidth="300.0" promptText="Mot de Passe">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXPasswordField>
+            <JFXPasswordField fx:id="txtConfirm" focusColor="#4a148c" labelFloat="true" layoutX="472.0" layoutY="361.0" prefHeight="29.0" prefWidth="300.0" promptText="Confirmer Mot de Passe">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXPasswordField>
+            <JFXTextField fx:id="txtProfilLog" editable="false" focusColor="#4a148c" labelFloat="true" layoutX="453.0" layoutY="236.0" prefHeight="33.0" prefWidth="319.0" promptText="Profil">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
